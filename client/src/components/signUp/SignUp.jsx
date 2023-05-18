@@ -12,6 +12,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { authenticateSignup } from '../../service/api';
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -50,9 +51,22 @@ export default function SignUp() {
       password: data.get('password'),
     });
   };
-
+  const navigate = useNavigate();
   const signupUser = async () => {
-    await authenticateSignup(signup);
+    try {
+      let res = await authenticateSignup(signup);
+      if (res.status === 200) {
+        navigate('/')
+      }else{
+        return(
+          <Box>
+            User ALready Registered
+          </Box>
+        )
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (

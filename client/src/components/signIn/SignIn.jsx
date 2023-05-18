@@ -10,6 +10,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { authenticateLogin } from '../../service/api';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -26,7 +29,34 @@ function Copyright(props) {
 
 const theme = createTheme();
 
+const loginInitialValues = {
+  email: '',
+  password: ''
+}
+
 export default function SignIn() {
+  const [login, setLogin] = useState(loginInitialValues)
+
+  const onValueChange = (e) => {
+    setLogin({...login, [e.target.name]: e.target.value});
+  }
+  const navigate = useNavigate();
+  const loginUser = async () => {
+    try {
+      let response = await authenticateLogin(login);
+      if (response.status === 200) {
+        navigate('/home')
+      }else{
+        return(
+          <Box>
+            User ALready Registered
+          </Box>
+        )
+      }
+    } catch (error) {
+      console.log(error);
+    }
+}
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -64,6 +94,7 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={(e) => onValueChange(e)}
             />
             <TextField
               margin="normal"
@@ -74,12 +105,14 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={(e) => onValueChange(e)}
             />
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={() => loginUser()}
             >
               Sign In
             </Button>
