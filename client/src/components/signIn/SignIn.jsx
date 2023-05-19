@@ -42,29 +42,27 @@ export default function SignIn() {
   }
   const navigate = useNavigate();
   const loginUser = async () => {
-    try {
-      let response = await authenticateLogin(login);
-      if (response.status === 200) {
-        navigate('/home')
-      }else{
-        return(
-          <Box>
-            User ALready Registered
-          </Box>
-        )
-      }
-    } catch (error) {
-      console.log(error);
+    let response = await authenticateLogin(login);
+    console.log(response);
+    localStorage.setItem("userInfo", JSON.stringify(response))
+    if (localStorage.getItem('userInfo')) {
+      navigate('/home')
     }
-}
+  }
+  
+  
+  
+  
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // });
   };
+
 
   return (
     <ThemeProvider theme={theme}>

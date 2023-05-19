@@ -1,8 +1,17 @@
 import React from 'react'
+import Error from '../Error';
 
 const Home = () => {
+
+  const userInfo = localStorage.getItem("userInfo");
   return (
-    <div>Home</div>
+  <>
+    {
+      userInfo ? 
+      <div>Home</div> : 
+      <Error />
+    }
+  </>  
   )
 }
 
