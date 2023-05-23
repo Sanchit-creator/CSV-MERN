@@ -7,11 +7,32 @@ module.exports.create = async (req, res) => {
         if (exist) {
             return res.status(401).json({ message: 'Student already registered'});
         }
-        const student = req.body;
-        const newStudent = new Student(student);
+        const newStudent = new Student({
+            batch: req.body.batch,
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            email: req.body.email,
+            college: req.body.college,
+            status: req.body.status,
+            dsa: req.body.dsa,
+            webd: req.body.webd,
+            react: req.body.react,
+            results: req.body.results,
+            user: req.user._id
+        });
         await newStudent.save();
         res.status(200).json({
-            message: student
+            batch: req.body.batch,
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            email: req.body.email,
+            college: req.body.college,
+            status: req.body.status,
+            dsa: req.body.dsa,
+            webd: req.body.webd,
+            react: req.body.react,
+            results: req.body.results,
+            user: req.user._id
         });
     } catch (error) {
         res.status(500).json({message: error.message});

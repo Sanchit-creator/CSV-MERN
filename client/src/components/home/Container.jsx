@@ -104,7 +104,7 @@ const Container = () => {
                     id="name"
                     label="Batch"
                     name='batch'
-                    type="email"
+                    type="text"
                     fullWidth
                     variant="standard"
                     onChange={(e) => onInputChange(e)}
@@ -115,7 +115,7 @@ const Container = () => {
                     id="name"
                     label="First Name"
                     name='firstname'
-                    type="email"
+                    type="text"
                     fullWidth
                     variant="standard"
                     onChange={(e) => onInputChange(e)}
@@ -126,7 +126,7 @@ const Container = () => {
                     id="name"
                     label="Last Name"
                     name='lastname'
-                    type="email"
+                    type="text"
                     fullWidth
                     variant="standard"
                     onChange={(e) => onInputChange(e)}
@@ -148,7 +148,7 @@ const Container = () => {
                     id="name"
                     label="College"
                     name='college'
-                    type="email"
+                    type="text"
                     fullWidth
                     variant="standard"
                     onChange={(e) => onInputChange(e)}
@@ -159,7 +159,7 @@ const Container = () => {
                     id="name"
                     label="Status"
                     name='status'
-                    type="email"
+                    type="text"
                     fullWidth
                     variant="standard"
                     onChange={(e) => onInputChange(e)}
@@ -170,7 +170,7 @@ const Container = () => {
                     id="name"
                     label="DSA Score"
                     name='dsa'
-                    type="email"
+                    type="text"
                     fullWidth
                     variant="standard"
                     onChange={(e) => onInputChange(e)}
@@ -181,7 +181,7 @@ const Container = () => {
                     id="name"
                     label="Web D Score"
                     name='webd'
-                    type="email"
+                    type="text"
                     fullWidth
                     variant="standard"
                     onChange={(e) => onInputChange(e)}
@@ -192,29 +192,29 @@ const Container = () => {
                     id="name"
                     label="React Score"
                     name='react'
-                    type="email"
+                    type="text"
                     fullWidth
                     variant="standard"
                     onChange={(e) => onInputChange(e)}
                 />
-                <TextField
+                {/* <TextField
                     autoFocus
                     margin="dense"
                     id="name"
                     label="Interview"
                     name='interview'
-                    type="email"
+                    type="text"
                     fullWidth
                     variant="standard"
                     onChange={(e) => onInputChange(e)}
-                />
+                /> */}
                 <TextField
                     autoFocus
                     margin="dense"
                     id="name"
                     label="Result"
                     name='results'
-                    type="email"
+                    type="text"
                     fullWidth
                     variant="standard"
                     onChange={(e) => onInputChange(e)}

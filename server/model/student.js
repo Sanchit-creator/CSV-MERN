@@ -36,13 +36,19 @@ const studentSchema = new mongoose.Schema({
         type: String,
         required: true  
     },
-    interview: {
-        type: String,
-        required: true
-    },
+    interview: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Interview'
+        }
+    ],
     results: {
         type: String,
         required: true
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
 }, {
     timestamps: true
