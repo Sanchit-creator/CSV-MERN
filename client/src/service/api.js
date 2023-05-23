@@ -9,6 +9,19 @@ export const authenticateSignup = async (data) => {
     }
 }
 
+export const authenticateStudent = async (data) => {
+    try {
+        const config = {
+            headers: {
+                authorization : `Bearer ${JSON.parse(localStorage.getItem('token'))}`
+            }
+        }
+        return await axios.post(`${URL}/api/students/register-student`, data, config);
+    } catch (error) {
+        console.log('Error while calling signup api', error.response.data);
+    }
+}
+
 
 export const authenticateLogin = async (data) => {
     try {
