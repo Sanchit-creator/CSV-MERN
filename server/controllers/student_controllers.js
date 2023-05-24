@@ -17,7 +17,6 @@ module.exports.create = async (req, res) => {
             dsa: req.body.dsa,
             webd: req.body.webd,
             react: req.body.react,
-            results: req.body.results,
             user: req.user._id
         });
         await newStudent.save();
@@ -31,10 +30,21 @@ module.exports.create = async (req, res) => {
             dsa: req.body.dsa,
             webd: req.body.webd,
             react: req.body.react,
-            results: req.body.results,
             user: req.user._id
         });
     } catch (error) {
         res.status(500).json({message: error.message});
     }
 }
+
+
+module.exports.fetch = async (req, res) => {
+    try {
+        const fetchData = await Student.find();
+        res.status(200).json(fetchData);
+        console.log(fetchData);
+    } catch (error) {
+        res.status(500).json({message: error.message});
+    }
+}
+

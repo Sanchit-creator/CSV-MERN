@@ -10,6 +10,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useNavigate } from 'react-router-dom';
 import { authenticateStudent } from '../../service/api';
+import Show from './Show';
 
 
 const Contaner = styled(Box)`
@@ -208,7 +209,7 @@ const Container = () => {
                     variant="standard"
                     onChange={(e) => onInputChange(e)}
                 /> */}
-                <TextField
+                {/* <TextField
                     autoFocus
                     margin="dense"
                     id="name"
@@ -218,7 +219,7 @@ const Container = () => {
                     fullWidth
                     variant="standard"
                     onChange={(e) => onInputChange(e)}
-                />
+                /> */}
                 </DialogContent>
                 <DialogActions>
                 <Button onClick={handleClose}>Cancel</Button>
@@ -229,6 +230,7 @@ const Container = () => {
             <Typography component='h3'>Add Student Data</Typography>
         </InputBox>
     </Contaner>
+    <Show />
     </>
   )
 }

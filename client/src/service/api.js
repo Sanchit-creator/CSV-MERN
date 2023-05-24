@@ -22,6 +22,20 @@ export const authenticateStudent = async (data) => {
     }
 }
 
+// export const getStudent = async () => {
+//     try {
+//         const config = {
+//             headers: {
+//                 authorization : `Bearer ${JSON.parse(localStorage.getItem('token'))}`
+//             }
+//         }
+//         const res = await axios.get(`${URL}/api/students/fetch`, config);
+//         return res.data;
+//     } catch (error) {
+//         console.log('Error', error.response.data);
+//     }
+// }
+
 
 export const authenticateLogin = async (data) => {
     try {

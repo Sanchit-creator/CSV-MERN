@@ -8,6 +8,14 @@ const interviewSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    email: {
+        type: String,
+        required: true
+    },
+    results: {
+        type: String,
+        required: true
+    },
     student: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Student'
