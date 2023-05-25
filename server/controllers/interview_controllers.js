@@ -31,3 +31,14 @@ module.exports.create = async (req, res) => {
         res.status(500).json({message: error.message});
     }
 }
+
+
+module.exports.fetch = async (req, res) => {
+    try {
+        const fetchData = await Interview.find();
+        res.status(200).json(fetchData);
+        console.log(fetchData);
+    } catch (error) {
+        res.status(500).json({message: error.message});
+    }
+}

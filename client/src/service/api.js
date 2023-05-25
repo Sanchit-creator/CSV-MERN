@@ -22,19 +22,31 @@ export const authenticateStudent = async (data) => {
     }
 }
 
-// export const getStudent = async () => {
-//     try {
-//         const config = {
-//             headers: {
-//                 authorization : `Bearer ${JSON.parse(localStorage.getItem('token'))}`
-//             }
-//         }
-//         const res = await axios.get(`${URL}/api/students/fetch`, config);
-//         return res.data;
-//     } catch (error) {
-//         console.log('Error', error.response.data);
-//     }
-// }
+export const authenticateInterview = async (data) => {
+    try {
+        const config = {
+            headers: {
+                authorization : `Bearer ${JSON.parse(localStorage.getItem('token'))}`
+            }
+        }
+        return await axios.post(`${URL}/api/students/interview`, data, config);
+    } catch (error) {
+        console.log('Error while calling signup api', error.response.data);
+    }
+}
+
+export const getInterview = async () => {
+    try {
+        const config = {
+            headers: {
+                authorization : `Bearer ${JSON.parse(localStorage.getItem('token'))}`
+            }
+        }
+        return await axios.get(`${URL}/api/students/interview-fetch`, config);
+    } catch (error) {
+        console.log('Error', error.response.data);
+    }
+}
 
 
 export const authenticateLogin = async (data) => {

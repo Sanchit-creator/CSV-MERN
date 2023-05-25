@@ -8,9 +8,11 @@ import { useDispatch, useSelector } from 'react-redux'
 const Contaner = styled(Box)`
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     padding-top: 5vh;
+    height: 100%
 `
 const InputBox = styled(Box)`
     width: 80%;
