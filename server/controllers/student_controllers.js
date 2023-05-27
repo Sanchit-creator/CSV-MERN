@@ -48,3 +48,17 @@ module.exports.fetch = async (req, res) => {
     }
 }
 
+module.exports.download = async (req, res) => {
+    const {Parser} = require("json2csv")
+    const jsoncsvParser = new Parser();
+    try {
+        const fetchData = await Student.find();
+        const csv = await jsoncsvParser.parse(fetchData)
+        res.attachment("student.csv")
+        res.status(200).send(csv)
+        console.log(csv);
+    } catch (error) {
+        res.status(500).json({message: error.message});
+    }
+}
+

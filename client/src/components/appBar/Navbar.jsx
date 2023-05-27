@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom';
+import { downloadCsv } from '../../service/api';
+import download from 'downloadjs'
 
 
 const Navbar = () => {
@@ -20,6 +22,12 @@ const Navbar = () => {
   const HomePage = () => {
     navigate('/home')
     setfirst('Interview')
+  }
+
+  const handleDownload = async () => {
+    const res = await downloadCsv();
+    // const blob = await res.blob();
+    download(res, "student.csv")
   }
 
   const userInfo = localStorage.getItem("userInfo");
@@ -39,7 +47,7 @@ const Navbar = () => {
                   {first}
                 </Typography>
               }
-              <Typography onClick>Download</Typography>
+              <Typography onClick = {() => handleDownload()}>Download</Typography>
             </>
           }
           {userInfo && <Button color="inherit"

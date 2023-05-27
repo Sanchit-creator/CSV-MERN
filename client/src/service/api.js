@@ -79,5 +79,15 @@ export const deleteInterview = async (data) => {
     }
 }
 
+export const downloadCsv = async() => {
+    try {
+        const res = await axios.get(`${URL}/api/students/download`);
+        console.log(res);
+        return res.data;
+    } catch (error) {
+        console.log('Error', error.response.data);
+    }
+}
+
 
 

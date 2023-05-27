@@ -10,7 +10,7 @@ router.post('/interview', protect, interviewController.create);
 router.post('/destroy/:id', protect ,interviewController.destroy);
 router.get('/fetch', protect, studentController.fetch);
 router.get('/interview-fetch', protect, interviewController.fetch);
-// router.patch('/interview-update', protect, interviewController.update);
+router.get('/download', studentController.download);
 
 module.exports = router;
 
