@@ -39,6 +39,7 @@ const Navbar = () => {
                   {first}
                 </Typography>
               }
+              <Typography onClick>Download</Typography>
             </>
           }
           {userInfo && <Button color="inherit"

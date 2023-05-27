@@ -65,5 +65,19 @@ export const authenticateLogin = async (data) => {
     }
 }
 
+export const deleteInterview = async (data) => {
+    try {
+        const config = {
+            headers: {
+                authorization : `Bearer ${JSON.parse(localStorage.getItem('token'))}`
+            }
+        }
+        return await axios.post(`${URL}/api/students/destroy/${data.id}`, data, config);
+    } catch (error) {
+        console.log('Error while calling login api', error);
+        return error.response.data.message;
+    }
+}
+
 
 

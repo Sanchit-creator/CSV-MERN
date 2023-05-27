@@ -38,8 +38,8 @@ const Show = () => {
   return (
     <Contaner>
         {
-            students.map(student => (
-                <InputBox>
+            students.map((student, key) => (
+                <InputBox key={student._id}>
                     <Typography>Name: {student.firstname} {student.lastname}</Typography> 
                     <Typography>Batch: {student.batch}</Typography>
                     <Typography>Email: {student.email} </Typography>
