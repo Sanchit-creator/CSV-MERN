@@ -45,6 +45,7 @@ export default function SignIn() {
     let response = await authenticateLogin(login);
     console.log(response);
     localStorage.setItem("userInfo", JSON.stringify(response))
+    localStorage.setItem("token", JSON.stringify(response.token))
     if (localStorage.getItem('userInfo')) {
       navigate('/home')
     }

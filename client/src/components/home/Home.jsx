@@ -1,5 +1,6 @@
 import React from 'react'
 import Error from '../Error';
+import Container from './Container';
 
 const Home = () => {
 
@@ -8,7 +9,7 @@ const Home = () => {
   <>
     {
       userInfo ? 
-      <div>Home</div> : 
+      <Container /> : 
       <Error />
     }
   </>  

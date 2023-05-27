@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -7,28 +7,49 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom';
+import { downloadCsv } from '../../service/api';
+import download from 'downloadjs'
 
 
 const Navbar = () => {
-
+  const [first, setfirst] = useState('Interview')
   const navigate = useNavigate();
+  const InterviewPage = () => {
+    navigate('/interview')
+    setfirst('Student')
+  }
+
+  const HomePage = () => {
+    navigate('/home')
+    setfirst('Interview')
+  }
+
+  const handleDownload = async () => {
+    const res = await downloadCsv();
+    // const blob = await res.blob();
+    download(res, "student.csv")
+  }
+
   const userInfo = localStorage.getItem("userInfo");
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
-          </Typography>
+          {
+            userInfo &&
+            <>
+              {
+                first === "Interview" ?
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}onClick={InterviewPage}>
+                  {first}
+                </Typography> :
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}onClick={HomePage}>
+                  {first}
+                </Typography>
+              }
+              <Typography onClick = {() => handleDownload()}>Download</Typography>
+            </>
+          }
           {userInfo && <Button color="inherit"
             onClick={() => {
               localStorage.removeItem("userInfo");
