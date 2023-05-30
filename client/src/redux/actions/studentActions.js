@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as actionType from '../constants/studentConstants'
 
-const URL = 'http://localhost:3000'
+const URL = 'http://localhost:2000'
 export const getStudents = () => async (dispatch) => {
     try {
         const config = {
